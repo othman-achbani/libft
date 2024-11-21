@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 15:57:35 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/17 16:11:08 by oachbani         ###   ########.fr       */
+/*   Created: 2024/10/27 12:24:55 by oachbani          #+#    #+#             */
+/*   Updated: 2024/10/27 15:16:37 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	ft_printnb_helper(int n, int *res)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
 	{
-		*res += ft_putchar('-');
+		ft_putchar_fd('-', fd);
 		n = -n;
-		ft_printnb_helper(n, res);
+		ft_putnbr_fd(n, fd);
 	}
 	else if (n >= 10)
 	{
-		ft_printnb_helper(n / 10, res);
-		ft_printnb_helper(n % 10, res);
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
 	else
-		*res += ft_putchar(n + '0');
-}
-
-int	ft_printnb(int n)
-{
-	int	res;
-
-	res = 0;
-	if (n == -2147483648)
-	{
-		res += ft_putstr("-2147483648");
-		return (res);
-	}
-	ft_printnb_helper(n, &res);
-	return (res);
+		ft_putchar_fd(n + '0', fd);
 }

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:36:14 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/17 16:11:03 by oachbani         ###   ########.fr       */
+/*   Created: 2024/10/23 12:26:45 by oachbani          #+#    #+#             */
+/*   Updated: 2024/11/07 09:44:57 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+char	*ft_strdup(const char *s)
 {
-	write(1, &c, 1);
-	return (1);
+	size_t	i;
+	char	*p;
+
+	i = ft_strlen(s);
+	p = (char *)ft_calloc(i + 1, sizeof(char));
+	if (!p)
+		return (NULL);
+	i = -1;
+	while (s[++i])
+		p[i] = s[i];
+	return (p);
 }

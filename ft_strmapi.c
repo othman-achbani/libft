@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:37:42 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/17 16:11:18 by oachbani         ###   ########.fr       */
+/*   Created: 2024/10/26 12:37:33 by oachbani          #+#    #+#             */
+/*   Updated: 2024/10/26 14:27:11 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	int		i;
+	char	*str;
+	size_t	size;
 
-	i = -1;
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	size = ft_strlen(s);
+	str = (char *)ft_calloc(size + 1, sizeof(char));
 	if (!str)
-		return (ft_putstr("(null)"));
-	while (str[++i])
-		ft_putchar(str[i]);
-	return (i);
+		return (NULL);
+	while ((size_t)i < size)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	return (str);
 }

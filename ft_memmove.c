@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 09:59:38 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/17 16:11:06 by oachbani         ###   ########.fr       */
+/*   Created: 2024/10/26 18:35:44 by oachbani          #+#    #+#             */
+/*   Updated: 2024/11/06 15:48:04 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-static void	ft_puthex_helper(unsigned int n, int i, int *res)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (n > 15)
+	char		*d;
+	char		*s;
+	int			i;
+
+	i = -1;
+	if (!dest && !src)
+		return (NULL);
+	s = (void *)src;
+	d = dest;
+	if (d > s)
 	{
-		ft_puthex_helper(n / 16, i, res);
-		ft_puthex_helper(n % 16, i, res);
+		while (n-- > 0)
+			d[n] = s[n];
 	}
 	else
 	{
-		if (n < 10)
-			*res += ft_putchar(n + '0');
-		else if (i)
-			*res += ft_putchar(n - 10 + 65);
-		else
-			*res += ft_putchar(n - 10 + 97);
+		while ((size_t)++i < n)
+			d[i] = s[i];
 	}
-}
-
-int	ft_puthex(unsigned int n, int i)
-{
-	int	res;
-
-	res = 0;
-	ft_puthex_helper(n, i, &res);
-	return (res);
+	return (dest);
 }
