@@ -6,7 +6,7 @@
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:36:22 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/06 17:23:59 by oachbani         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:36:25 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	size_t		i;
 	size_t		j;
 
+	if (!str && len == 0)
+		return (NULL);
 	if (!(*to_find))
 		return ((char *)str);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 19:10:48 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/06 10:16:12 by oachbani         ###   ########.fr       */
+/*   Updated: 2024/11/07 19:57:40 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *str, int c)
 {
 	int		i;
 
-	if (!str)
-		return (NULL);
 	i = -1;
 	while (str[++i])
 		if (str[i] == (char) c)

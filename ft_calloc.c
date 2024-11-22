@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 17:36:39 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/07 13:55:33 by oachbani         ###   ########.fr       */
+/*   Created: 2024/10/23 15:20:52 by oachbani          #+#    #+#             */
+/*   Updated: 2024/11/06 11:18:36 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_calloc(size_t num, size_t size)
 {
-	char		*p;
-	size_t		slen;
-	size_t		i;
+	void	*p;
 
-	if (!s)
+	if (size && num > SIZE_MAX / size)
 		return (NULL);
-	slen = ft_strlen(s);
-	if (start > (unsigned int)slen)
-		return (ft_strdup(""));
-	if (len + start >= slen)
-		p = (char *)ft_calloc(slen - start + 1, sizeof(char));
-	else
-		p = (char *)ft_calloc(len + 1, sizeof(char));
+	p = malloc(num * size);
 	if (!p)
 		return (NULL);
-	i = 0;
-	while (s[start] && i < len)
-	{
-		p[i] = s[start];
-		start++;
-		i++;
-	}
+	ft_bzero(p, num * size);
 	return (p);
 }

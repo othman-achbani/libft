@@ -6,7 +6,7 @@
 /*   By: oachbani <oachbani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:20:48 by oachbani          #+#    #+#             */
-/*   Updated: 2024/11/21 09:27:23 by oachbani         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:33:53 by oachbani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_itoa(int n)
 
 	nbr = n;
 	i = len(n);
-	p = (char *)c(i + 1, sizeof(char));
+	p = (char *)ft_calloc(i + 1, sizeof(char));
 	if (!p)
 		return (NULL);
 	if (nbr < 0)
